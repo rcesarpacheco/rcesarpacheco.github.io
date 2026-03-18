@@ -575,7 +575,6 @@ details[open] > .slides-toggle {
 .ta-collapse {
   border: 1px solid var(--color-border);
   border-radius: 8px;
-  overflow: hidden;
   margin-bottom: 1.5rem;
 }
 
@@ -588,6 +587,7 @@ details[open] > .slides-toggle {
   cursor: pointer;
   list-style: none;
   transition: background 0.15s;
+  border-radius: 8px;
 }
 
 .ta-banner:hover {
@@ -625,10 +625,15 @@ details[open] .ta-banner-arrow {
   transform: rotate(90deg);
 }
 
+details[open] > .ta-banner {
+  border-radius: 8px 8px 0 0;
+}
+
 .ta-collapse-body {
   padding: 1rem 1.4rem 1.2rem;
   background: var(--color-surface);
   border-top: 1px solid var(--color-border);
+  border-radius: 0 0 8px 8px;
 }
 
 .ta-eval-download {
