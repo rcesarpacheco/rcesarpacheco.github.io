@@ -1,0 +1,36 @@
+<aside class="sidebar">
+  <div class="sidebar-inner">
+
+    <div class="sidebar-photo">
+      {{ if .Site.Params.photo }}
+        <img src="{{ .Site.Params.photo }}" alt="{{ .Site.Params.name }}">
+      {{ else }}
+        <div class="photo-placeholder">{{ substr .Site.Params.name 0 1 }}</div>
+      {{ end }}
+    </div>
+
+    <h1 class="sidebar-name">{{ .Site.Params.name }}</h1>
+    <p class="sidebar-role">{{ .Site.Params.role }}</p>
+    <p class="sidebar-affiliation">{{ .Site.Params.department }}<br>{{ .Site.Params.university }}</p>
+
+    <div class="sidebar-icons">
+      <a href="{{ .Site.Params.cv_pdf }}" target="_blank" title="Download CV" class="sidebar-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/><line x1="9" y1="11" x2="15" y2="11"/></svg>
+        <span>CV</span>
+      </a>
+      <a href="mailto:{{ .Site.Params.email }}" title="Email" class="sidebar-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 4 12 13 2 4"/></svg>
+        <span>Email</span>
+      </a>
+    </div>
+
+    <nav class="sidebar-nav">
+      {{ range .Site.Menus.main }}
+        <a href="{{ .URL }}" class="nav-link {{ if eq $.RelPermalink .URL }}active{{ end }}">
+          {{ .Name }}
+        </a>
+      {{ end }}
+    </nav>
+
+  </div>
+</aside>
