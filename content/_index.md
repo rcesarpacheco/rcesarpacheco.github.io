@@ -2,11 +2,7 @@
 title: "Home"
 ---
 
-Welcome! I am a PhD candidate in the Department of Economics at Columbia University, expected to graduate in 2027.
-
-My research spans **macroeconomics**, **finance**, and **banking**. I study how information frictions shape financial markets and firm financing decisions.
-
-I am on the **job market in 2026–2027**. My job market paper studies coordination and welfare in equity financing.
+Welcome! I am a PhD candidate in the Department of Economics at Columbia University. My research interests include **macroeconomics**, **finance**, and **banking**.
 
 ### Research interests
 
@@ -19,5 +15,4 @@ I am on the **job market in 2026–2027**. My job market paper studies coordinat
 ### Contact
 
 - **Email:** [rodrigo.pacheco@columbia.edu](mailto:rodrigo.pacheco@columbia.edu)
-- **Office:** IAB 1022, Columbia University
 - **CV:** [Download PDF](/files/Pacheco_CV.pdf)

@@ -5,26 +5,22 @@ title: "Research"
 ### Working papers
 
 <div class="paper">
-  <span class="jmp-badge">Job market paper</span>
-  <div class="paper-title">Information, Coordination and Welfare in Equity Financing</div>
-  <div class="paper-abstract">
-    [Add your abstract here.]
+  <div class="paper-title-row">
+    <span class="jmp-badge">Job market paper</span>
+    <span class="paper-title">Information, Coordination and Welfare in Equity Financing</span>
   </div>
+  <!-- <div class="paper-abstract">[Add your abstract here.]</div> -->
 </div>
 
 <div class="paper">
   <div class="paper-title">Bank Competition, Productivity and Inequality</div>
-  <div class="paper-abstract">
-    [Add your abstract here.]
-  </div>
+  <!-- <div class="paper-abstract">[Add your abstract here.]</div> -->
 </div>
 
 <div class="paper">
   <div class="paper-title">Household Assets and the Job Ladder</div>
   <div class="paper-coauthors">with Madeline Hanson</div>
-  <div class="paper-abstract">
-    [Add your abstract here.]
-  </div>
+  <!-- <div class="paper-abstract">[Add your abstract here.]</div> -->
 </div>
 
 ### Publications

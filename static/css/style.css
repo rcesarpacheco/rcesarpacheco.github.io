@@ -374,7 +374,15 @@ a:hover {
   background: var(--color-accent-bg);
   color: var(--color-accent);
   border-radius: 3px;
-  margin-bottom: 0.5rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.paper-title-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 0.25rem;
 }
 
 /* ---- Research tags ---- */
