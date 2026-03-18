@@ -9,7 +9,7 @@ title: "Teaching"
     <div class="course-name">Intermediate Macroeconomics</div>
     <div class="course-term">Summer 2025, Summer 2024</div>
   </div>
-  <div class="course-role">Instructor of record · Columbia University · Evaluations: 4.7/5.0</div>
+  <div class="course-role">Instructor of record · Columbia University · Evaluations: 4.91/5.0</div>
   <p class="paper-abstract">Undergraduate course covering national income accounting, the classical closed-economy model, money and inflation, unemployment, the Solow growth model, economic fluctuations, the IS-LM model, and the aggregate supply curve and Phillips curve.</p>
   <div class="course-materials">
     <a href="/files/teaching/IntMacro_Syllabus_2025.pdf">Syllabus</a>
@@ -40,7 +40,7 @@ title: "Teaching"
   <summary class="ta-banner">
     <span class="ta-banner-text">
       <span class="ta-banner-title">Columbia University</span>
-      <span class="ta-banner-score">Evaluations: 4.7 / 5.0</span>
+      <span class="ta-banner-score">Evaluations: 4.70 / 5.0</span>
     </span>
     <span class="ta-banner-arrow">▸</span>
   </summary>
