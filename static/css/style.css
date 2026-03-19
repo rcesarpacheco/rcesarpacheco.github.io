@@ -509,8 +509,9 @@ a:hover {
 /* ---- Expandable lecture slides ---- */
 
 .slides-expand {
-  display: block;
-  margin-top: 0.5rem;
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
 }
 
 .slides-toggle {
@@ -549,6 +550,9 @@ details[open] > .slides-toggle {
   border-radius: 4px;
   padding: 0.4rem 0;
   margin-top: 0.3rem;
+  position: absolute;
+  z-index: 10;
+  min-width: 280px;
 }
 
 .slides-list a {

@@ -374,7 +374,15 @@ a:hover {
   background: var(--color-accent-bg);
   color: var(--color-accent);
   border-radius: 3px;
-  margin-bottom: 0.5rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.paper-title-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 0.25rem;
 }
 
 /* ---- Research tags ---- */
@@ -502,6 +510,7 @@ a:hover {
 
 .slides-expand {
   display: inline-block;
+  vertical-align: top;
   position: relative;
 }
 
@@ -530,21 +539,20 @@ a:hover {
 details[open] > .slides-toggle {
   border-color: var(--color-accent);
   color: var(--color-accent);
-  border-radius: 4px 4px 0 0;
+  margin-bottom: 0.4rem;
 }
 
 .slides-list {
-  position: absolute;
-  left: 0;
-  top: 100%;
-  z-index: 10;
-  background: var(--color-surface);
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg);
   border: 1px solid var(--color-border);
-  border-top: none;
-  border-radius: 0 4px 4px 4px;
+  border-radius: 4px;
   padding: 0.4rem 0;
+  margin-top: 0.3rem;
+  position: absolute;
+  z-index: 10;
   min-width: 280px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 .slides-list a {
@@ -567,7 +575,6 @@ details[open] > .slides-toggle {
 .ta-collapse {
   border: 1px solid var(--color-border);
   border-radius: 8px;
-  overflow: hidden;
   margin-bottom: 1.5rem;
 }
 
@@ -580,6 +587,7 @@ details[open] > .slides-toggle {
   cursor: pointer;
   list-style: none;
   transition: background 0.15s;
+  border-radius: 8px;
 }
 
 .ta-banner:hover {
@@ -617,10 +625,15 @@ details[open] .ta-banner-arrow {
   transform: rotate(90deg);
 }
 
+details[open] > .ta-banner {
+  border-radius: 8px 8px 0 0;
+}
+
 .ta-collapse-body {
   padding: 1rem 1.4rem 1.2rem;
   background: var(--color-surface);
   border-top: 1px solid var(--color-border);
+  border-radius: 0 0 8px 8px;
 }
 
 .ta-eval-download {

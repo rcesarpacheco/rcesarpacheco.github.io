@@ -17,9 +17,8 @@ title: "Teaching"
     <div class="course-materials">
       <a href="/files/teaching/IntMacro_Syllabus_2025.pdf">Syllabus</a>
       <a href="/files/teaching/evals/Pacheco_Summer_Teaching_Evaluations.pdf">Teaching evaluations</a>
-    </div>
- <details class="slides-expand">
-      <summary class="slides-toggle">Lecture slides ▸</summary>
+      <details class="slides-expand">
+        <summary class="slides-toggle">Lecture slides ▸</summary>
         <div class="slides-list">
           <a href="/files/teaching/slides/01_Introduction.pdf">Introduction</a>
           <a href="/files/teaching/slides/02_Data_of_Macroeconomics.pdf">The Data of Macroeconomics</a>
@@ -35,7 +34,7 @@ title: "Teaching"
           <a href="/files/teaching/slides/12_AS_Curve_Phillips_Curve.pdf">Aggregate Supply Curve and Phillips Curve</a>
         </div>
       </details>
-  </div>
+    </div>
 </details>
 
 ### Teaching assistant
