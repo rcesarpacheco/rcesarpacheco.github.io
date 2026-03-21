@@ -569,7 +569,7 @@ function drawSolow() {
   const ss = steadyState(p.s, p.alpha);
   const gr = goldenRule(p.alpha);
 
-  const ml = 52, mr = 20, mt = 16, mb = 44;
+  const ml = 52, mr = 20, mt = 36, mb = 44;
   const pw = w - ml - mr;
   const ph = h - mt - mb;
 
@@ -604,11 +604,8 @@ function drawSolow() {
   ctx.font = '12px "Newsreader", Georgia, serif';
   ctx.textAlign = 'center';
   ctx.fillText('k  (capital per worker)', ml + pw / 2, h - 4);
-  ctx.save();
-  ctx.translate(13, mt + ph / 2);
-  ctx.rotate(-Math.PI / 2);
-  ctx.fillText('y, i', 0, 0);
-  ctx.restore();
+  ctx.textAlign = 'left';
+  ctx.fillText('y, i', ml - 4, mt - 10);
 
   // Ticks
   ctx.font = '10px "JetBrains Mono", monospace';
@@ -809,7 +806,7 @@ function drawGolden() {
   const p = getParams();
   const gr = goldenRule(p.alpha);
 
-  const ml = 52, mr = 20, mt = 16, mb = 44;
+  const ml = 52, mr = 20, mt = 36, mb = 56;
   const pw = w - ml - mr;
   const ph = h - mt - mb;
 
@@ -848,12 +845,9 @@ function drawGolden() {
   ctx.fillStyle = COL.textMuted;
   ctx.font = '12px "Newsreader", Georgia, serif';
   ctx.textAlign = 'center';
-  ctx.fillText('savings rate (s)', ml + pw / 2, h - 4);
-  ctx.save();
-  ctx.translate(13, mt + ph / 2);
-  ctx.rotate(-Math.PI / 2);
-  ctx.fillText('Steady-state c*', 0, 0);
-  ctx.restore();
+  ctx.fillText('s', toX(1), mt + ph + 30);
+  ctx.textAlign = 'left';
+  ctx.fillText('c*', ml - 4, mt - 10);
 
   // Ticks
   ctx.font = '10px "JetBrains Mono", monospace';
@@ -928,7 +922,7 @@ function drawGolden() {
   ctx.font = 'italic 12px "Newsreader", Georgia, serif';
   ctx.fillStyle = COL.gold;
   ctx.textAlign = 'center';
-  ctx.fillText('s_gold = ' + gr.sGold.toFixed(2), grX, mt + ph + 32);
+  ctx.fillText('s_gold = ' + gr.sGold.toFixed(2), grX, mt + ph + 44);
   ctx.textAlign = 'right';
   ctx.fillText(gr.cMax.toFixed(2), ml - 7, grY - 6);
 

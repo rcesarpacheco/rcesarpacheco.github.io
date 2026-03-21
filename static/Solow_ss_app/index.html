@@ -486,7 +486,7 @@ function draw() {
   const p = getParams();
   const ss = steadyState(p);
 
-  const ml = 52, mr = 24, mt = 20, mb = 44;
+  const ml = 52, mr = 24, mt = 36, mb = 44;
   const pw = w - ml - mr;
   const ph = h - mt - mb;
 
@@ -521,11 +521,8 @@ function draw() {
   ctx.font = '13px "Newsreader", Georgia, serif';
   ctx.textAlign = 'center';
   ctx.fillText('k  (capital per worker)', ml + pw / 2, h - 4);
-  ctx.save();
-  ctx.translate(14, mt + ph / 2);
-  ctx.rotate(-Math.PI / 2);
-  ctx.fillText('y, investment', 0, 0);
-  ctx.restore();
+  ctx.textAlign = 'left';
+  ctx.fillText('y, i', ml - 4, mt - 10);
 
   // Fixed tick labels
   ctx.font = '11px "JetBrains Mono", monospace';
