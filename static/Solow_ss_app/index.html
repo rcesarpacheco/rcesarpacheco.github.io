@@ -421,9 +421,9 @@ const COL = {
 // Legend
 const legendEl = document.getElementById('legend');
 [
-  { label: 'f(k) = A·kᵅ', color: COL.production, dashed: false },
-  { label: 's · A · kᵅ', color: COL.savings, dashed: false },
-  { label: 'δ · k', color: COL.breakeven, dashed: true },
+  { label: 'y = f(k) = A·kᵅ  (Output)', color: COL.production, dashed: false },
+  { label: 'i = s · y  (Investment)', color: COL.savings, dashed: false },
+  { label: 'δ · k  (Depreciation)', color: COL.breakeven, dashed: true },
 ].forEach(item => {
   const div = document.createElement('div');
   div.className = 'legend-item';
@@ -578,6 +578,18 @@ function draw() {
   }
   ctx.stroke();
 
+  // Label on f(k) curve
+  {
+    const kLabel = K_MAX * 0.75;
+    const yLabel = p.A * Math.pow(kLabel, ALPHA);
+    if (yLabel <= Y_MAX) {
+      ctx.font = 'italic 13px "Newsreader", Georgia, serif';
+      ctx.fillStyle = COL.production;
+      ctx.textAlign = 'left';
+      ctx.fillText('y', toX(kLabel) + 4, toY(yLabel) - 8);
+    }
+  }
+
   // s·f(k)
   ctx.beginPath();
   ctx.strokeStyle = COL.savings;
@@ -593,6 +605,18 @@ function draw() {
     !started ? (ctx.moveTo(toX(k), toY(y)), started = true) : ctx.lineTo(toX(k), toY(y));
   }
   ctx.stroke();
+
+  // Label on s·f(k) curve
+  {
+    const kLabel = K_MAX * 0.75;
+    const yLabel = p.s * p.A * Math.pow(kLabel, ALPHA);
+    if (yLabel <= Y_MAX && yLabel > 0.3) {
+      ctx.font = 'italic 13px "Newsreader", Georgia, serif';
+      ctx.fillStyle = COL.savings;
+      ctx.textAlign = 'left';
+      ctx.fillText('i', toX(kLabel) + 4, toY(yLabel) - 8);
+    }
+  }
 
   // δ·k
   ctx.beginPath();
@@ -638,7 +662,7 @@ function draw() {
       ctx.font = 'italic 13px "Newsreader", Georgia, serif';
       ctx.fillStyle = COL.production;
       ctx.textAlign = 'right';
-      ctx.fillText('y*', ml - 8, yPx - 6);
+      ctx.fillText('y*=' + fk.toFixed(2), ml - 8, yPx - 6);
     }
 
     // ── c* bracket: vertical segment between f(k*) and s·f(k*) at k* ──
@@ -669,7 +693,19 @@ function draw() {
       ctx.font = 'italic 14px "Newsreader", Georgia, serif';
       ctx.fillStyle = COL.breakeven;
       ctx.textAlign = 'left';
-      ctx.fillText('c*', bx + 6, midPx + 5);
+      ctx.fillText('c*=' + ss.cStar.toFixed(2), bx + 6, midPx + 5);
+    }
+
+    // ── i* horizontal dashed line from y-axis to s·f(k*) ──
+    if (sfk <= Y_MAX) {
+      ctx.beginPath();
+      ctx.strokeStyle = COL.savings;
+      ctx.lineWidth = 1;
+      ctx.setLineDash([4, 4]);
+      ctx.moveTo(ml, invPx);
+      ctx.lineTo(ssX, invPx);
+      ctx.stroke();
+      ctx.setLineDash([]);
     }
 
     // ── Vertical dashed line from x-axis up to f(k*) ──
@@ -692,11 +728,19 @@ function draw() {
     ctx.fillStyle = '#fff';
     ctx.fill();
 
+    // i* label on y-axis
+    if (sfk <= Y_MAX) {
+      ctx.font = 'italic 13px "Newsreader", Georgia, serif';
+      ctx.fillStyle = COL.savings;
+      ctx.textAlign = 'right';
+      ctx.fillText('i*=' + sfk.toFixed(2), ml - 8, invPx + (invPx < yPx + 20 ? 14 : -6));
+    }
+
     // k* label on x-axis
     ctx.font = 'italic 14px "Newsreader", Georgia, serif';
     ctx.fillStyle = COL.text;
     ctx.textAlign = 'center';
-    ctx.fillText('k*', ssX, mt + ph + 34);
+    ctx.fillText('k*=' + ss.kStar.toFixed(2), ssX, mt + ph + 34);
   }
 
   // Steady-state values
