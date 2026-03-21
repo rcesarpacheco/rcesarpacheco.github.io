@@ -38,7 +38,7 @@ title: "Teaching"
         <summary class="slides-toggle">Tools ▸</summary>
         <div class="slides-list">
           <a href="/Solow_ss_app/" target="_blank">Solow Steady State App</a>
-          <a href="/golden_rule_solow_3.html" target="_blank">Solow Golden Rule App</a>
+          <a href="/solow_golden_rule_app/" target="_blank">Solow Golden Rule App</a>
         </div>
       </details>
     </div>
