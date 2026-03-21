@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Steady-State Solow Model</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #FAF7F2;
+    --bg-card: #FFFFFF;
+    --text: #1A1A1A;
+    --text-muted: #6B6560;
+    --text-light: #9B9590;
+    --accent: #B8432F;
+    --blue: #2E5A88;
+    --green: #3A7D5C;
+    --border: #E5DFD8;
+    --border-light: #F0EBE4;
+    --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+    --radius: 10px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Newsreader', Georgia, serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .app {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 48px 32px 64px;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 48px;
+    animation: fadeUp 0.6s ease-out;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  header .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  header h1 {
+    font-size: 36px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+
+  header .subtitle {
+    font-size: 17px;
+    color: var(--text-muted);
+    font-style: italic;
+    font-weight: 300;
+    max-width: 540px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 28px;
+    align-items: start;
+    animation: fadeUp 0.6s ease-out 0.1s both;
+  }
+
+  @media (max-width: 860px) {
+    .layout { grid-template-columns: 1fr; }
+  }
+
+  .controls {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 24px;
+  }
+
+  .controls h2 {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    font-family: 'JetBrains Mono', monospace;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .param-group { margin-bottom: 22px; }
+  .param-group:last-child { margin-bottom: 0; }
+
+  .param-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+  }
+
+  .param-label {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--text);
+  }
+
+  .param-label .symbol {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 500;
+    margin-right: 2px;
+  }
+
+  .param-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    background: var(--bg);
+    padding: 2px 8px;
+    border-radius: 4px;
+    min-width: 52px;
+    text-align: center;
+  }
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--border);
+    outline: none;
+    cursor: pointer;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 3px solid var(--bg-card);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+    cursor: grab;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+
+  input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+    box-shadow: 0 2px 8px rgba(184,67,47,0.3);
+  }
+
+  input[type="range"]::-webkit-slider-thumb:active { cursor: grabbing; }
+
+  input[type="range"]::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 3px solid var(--bg-card);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+    cursor: grab;
+  }
+
+  .param-desc {
+    font-size: 12.5px;
+    color: var(--text-light);
+    margin-top: 5px;
+    line-height: 1.4;
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--border-light);
+    margin: 20px 0;
+  }
+
+  .chart-area {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+
+  .chart-container {
+    padding: 28px 28px 16px;
+    position: relative;
+  }
+
+  canvas { width: 100%; height: auto; display: block; }
+
+  .ss-output {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--border-light);
+  }
+
+  .ss-item {
+    padding: 20px 24px;
+    text-align: center;
+    border-right: 1px solid var(--border-light);
+    transition: background 0.25s;
+  }
+
+  .ss-item:last-child { border-right: none; }
+  .ss-item:hover { background: #FDFCFA; }
+
+  .ss-item .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 6px;
+  }
+
+  .ss-item .value {
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+  }
+
+  .ss-item .value.capital { color: var(--accent); }
+  .ss-item .value.output { color: var(--blue); }
+  .ss-item .value.consumption { color: var(--green); }
+
+  .ss-item .formula {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-top: 4px;
+    font-style: italic;
+  }
+
+  .legend {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    padding: 0 28px 20px;
+    flex-wrap: wrap;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13.5px;
+    color: var(--text-muted);
+  }
+
+  .legend-swatch {
+    width: 20px;
+    height: 3px;
+    border-radius: 2px;
+  }
+
+  .legend-swatch.dashed {
+    background: repeating-linear-gradient(
+      90deg,
+      var(--swatch-color) 0,
+      var(--swatch-color) 6px,
+      transparent 6px,
+      transparent 10px
+    );
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-light);
+    animation: fadeUp 0.6s ease-out 0.2s both;
+  }
+
+  footer p {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+
+  footer .equation {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    color: var(--text-muted);
+    background: var(--bg-card);
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  @media (max-width: 600px) {
+    .app { padding: 28px 16px 48px; }
+    header h1 { font-size: 26px; }
+    .controls { position: static; }
+    .ss-output { grid-template-columns: 1fr; }
+    .ss-item { border-right: none; border-bottom: 1px solid var(--border-light); }
+    .ss-item:last-child { border-bottom: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <header>
+    <div class="eyebrow">Interactive Model</div>
+    <h1>The Solow Growth Model</h1>
+    <div class="subtitle">Explore how savings, productivity, and depreciation shape the steady-state level of capital per worker.</div>
+  </header>
+
+  <div class="layout">
+    <div class="controls">
+      <h2>Parameters</h2>
+
+      <div class="param-group">
+        <div class="param-header">
+          <span class="param-label"><span class="symbol">A</span> Productivity (TFP)</span>
+          <span class="param-value" id="val-A">1.00</span>
+        </div>
+        <input type="range" id="A" min="0.10" max="3.00" step="0.01" value="1.00" />
+        <div class="param-desc">Total factor productivity in f(k) = A·k<sup>α</sup></div>
+      </div>
+
+      <div class="param-group">
+        <div class="param-header">
+          <span class="param-label"><span class="symbol">s</span> Savings rate</span>
+          <span class="param-value" id="val-s">0.20</span>
+        </div>
+        <input type="range" id="s" min="0.01" max="0.99" step="0.01" value="0.20" />
+        <div class="param-desc">Fraction of output saved and invested</div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="param-group">
+        <div class="param-header">
+          <span class="param-label"><span class="symbol">δ</span> Depreciation rate</span>
+          <span class="param-value" id="val-delta">0.05</span>
+        </div>
+        <input type="range" id="delta" min="0.01" max="0.20" step="0.01" value="0.05" />
+        <div class="param-desc">Fraction of capital that wears out each period</div>
+      </div>
+    </div>
+
+    <div class="chart-area">
+      <div class="chart-container">
+        <canvas id="chart" width="800" height="500"></canvas>
+      </div>
+      <div class="legend" id="legend"></div>
+      <div class="ss-output">
+        <div class="ss-item">
+          <div class="label">Steady-state k*</div>
+          <div class="value capital" id="ss-k">—</div>
+          <div class="formula">Capital per worker</div>
+        </div>
+        <div class="ss-item">
+          <div class="label">Steady-state y*</div>
+          <div class="value output" id="ss-y">—</div>
+          <div class="formula">Output per worker</div>
+        </div>
+        <div class="ss-item">
+          <div class="label">Steady-state c*</div>
+          <div class="value consumption" id="ss-c">—</div>
+          <div class="formula">Consumption per worker</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="equation">Δk = s · A · k<sup>α</sup> − δ · k &nbsp;&nbsp; (α = ⅓)</div>
+    <p>Steady state: the level of capital per worker where investment<br/>exactly offsets depreciation.</p>
+  </footer>
+</div>
+
+<script>
+const canvas = document.getElementById('chart');
+const ctx = canvas.getContext('2d');
+
+// ── Fixed axis ranges ──
+const K_MAX = 50;
+const Y_MAX = 12;
+
+const COL = {
+  production: '#2E5A88',
+  savings: '#B8432F',
+  breakeven: '#3A7D5C',
+  grid: '#ECE7E0',
+  axis: '#8C857D',
+  ssLine: '#B8432F',
+  fill: 'rgba(184, 67, 47, 0.06)',
+  text: '#1A1A1A',
+  textMuted: '#6B6560',
+};
+
+// Legend
+const legendEl = document.getElementById('legend');
+[
+  { label: 'f(k) = A·kᵅ', color: COL.production, dashed: false },
+  { label: 's · A · kᵅ', color: COL.savings, dashed: false },
+  { label: 'δ · k', color: COL.breakeven, dashed: true },
+].forEach(item => {
+  const div = document.createElement('div');
+  div.className = 'legend-item';
+  const swatch = document.createElement('div');
+  swatch.className = 'legend-swatch' + (item.dashed ? ' dashed' : '');
+  swatch.style.cssText = item.dashed
+    ? `--swatch-color: ${item.color};`
+    : `background: ${item.color};`;
+  const text = document.createElement('span');
+  text.textContent = item.label;
+  div.appendChild(swatch);
+  div.appendChild(text);
+  legendEl.appendChild(div);
+});
+
+// Sliders — α is fixed at 1/3
+const ALPHA = 1/3;
+
+const sliders = {
+  A: document.getElementById('A'),
+  s: document.getElementById('s'),
+  delta: document.getElementById('delta'),
+};
+const vals = {
+  A: document.getElementById('val-A'),
+  s: document.getElementById('val-s'),
+  delta: document.getElementById('val-delta'),
+};
+
+function getParams() {
+  return {
+    A: +sliders.A.value,
+    s: +sliders.s.value,
+    delta: +sliders.delta.value,
+  };
+}
+
+function steadyState(p) {
+  // k* = (s·A / δ)^(1/(1-α))
+  const kStar = Math.pow((p.s * p.A) / p.delta, 1 / (1 - ALPHA));
+  const yStar = p.A * Math.pow(kStar, ALPHA);
+  const cStar = (1 - p.s) * yStar;
+  return { kStar, yStar, cStar };
+}
+
+function setCanvasSize() {
+  const rect = canvas.parentElement.getBoundingClientRect();
+  const w = rect.width - 56;
+  const dpr = window.devicePixelRatio || 1;
+  canvas.style.width = w + 'px';
+  canvas.style.height = (w * 0.58) + 'px';
+  canvas.width = w * dpr;
+  canvas.height = w * 0.58 * dpr;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  return { w, h: w * 0.58 };
+}
+
+function draw() {
+  const { w, h } = setCanvasSize();
+  const p = getParams();
+  const ss = steadyState(p);
+
+  const ml = 52, mr = 24, mt = 20, mb = 44;
+  const pw = w - ml - mr;
+  const ph = h - mt - mb;
+
+  const toX = k => ml + (k / K_MAX) * pw;
+  const toY = y => mt + ph - (y / Y_MAX) * ph;
+
+  ctx.clearRect(0, 0, w, h);
+
+  // Grid
+  ctx.strokeStyle = COL.grid;
+  ctx.lineWidth = 1;
+  const nGridY = 6;
+  for (let i = 0; i <= nGridY; i++) {
+    const y = mt + (ph / nGridY) * i;
+    ctx.beginPath();
+    ctx.moveTo(ml, y);
+    ctx.lineTo(ml + pw, y);
+    ctx.stroke();
+  }
+
+  // Axes
+  ctx.strokeStyle = COL.axis;
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.moveTo(ml, mt);
+  ctx.lineTo(ml, mt + ph);
+  ctx.lineTo(ml + pw, mt + ph);
+  ctx.stroke();
+
+  // Axis labels
+  ctx.fillStyle = COL.textMuted;
+  ctx.font = '13px "Newsreader", Georgia, serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('k  (capital per worker)', ml + pw / 2, h - 4);
+  ctx.save();
+  ctx.translate(14, mt + ph / 2);
+  ctx.rotate(-Math.PI / 2);
+  ctx.fillText('y, investment', 0, 0);
+  ctx.restore();
+
+  // Fixed tick labels
+  ctx.font = '11px "JetBrains Mono", monospace';
+  ctx.fillStyle = COL.textMuted;
+  ctx.textAlign = 'center';
+  for (let i = 0; i <= 5; i++) {
+    ctx.fillText(((K_MAX / 5) * i).toFixed(0), toX((K_MAX / 5) * i), mt + ph + 18);
+  }
+  ctx.textAlign = 'right';
+  for (let i = 0; i <= nGridY; i++) {
+    const val = (Y_MAX / nGridY) * (nGridY - i);
+    ctx.fillText(val.toFixed(0), ml - 8, mt + (ph / nGridY) * i + 4);
+  }
+
+  const steps = 500;
+
+  // Shaded area between s·f(k) and δ·k up to k*
+  const kClamp = Math.min(ss.kStar, K_MAX);
+  if (kClamp > 0.01) {
+    ctx.beginPath();
+    for (let i = 0; i <= steps; i++) {
+      const k = (kClamp / steps) * i;
+      const y = Math.min(p.s * p.A * Math.pow(k, ALPHA), Y_MAX);
+      i === 0 ? ctx.moveTo(toX(k), toY(y)) : ctx.lineTo(toX(k), toY(y));
+    }
+    for (let i = steps; i >= 0; i--) {
+      const k = (kClamp / steps) * i;
+      const y = Math.min(p.delta * k, Y_MAX);
+      ctx.lineTo(toX(k), toY(y));
+    }
+    ctx.closePath();
+    ctx.fillStyle = COL.fill;
+    ctx.fill();
+  }
+
+  // f(k) = A·k^α  (clip at Y_MAX)
+  ctx.beginPath();
+  ctx.strokeStyle = COL.production;
+  ctx.lineWidth = 2.5;
+  ctx.setLineDash([]);
+  let started = false;
+  for (let i = 0; i <= steps; i++) {
+    const k = (K_MAX / steps) * i;
+    const y = p.A * Math.pow(k, ALPHA);
+    if (y > Y_MAX) {
+      if (started) ctx.lineTo(toX(k), toY(Y_MAX));
+      break;
+    }
+    !started ? (ctx.moveTo(toX(k), toY(y)), started = true) : ctx.lineTo(toX(k), toY(y));
+  }
+  ctx.stroke();
+
+  // s·f(k)
+  ctx.beginPath();
+  ctx.strokeStyle = COL.savings;
+  ctx.lineWidth = 2.5;
+  started = false;
+  for (let i = 0; i <= steps; i++) {
+    const k = (K_MAX / steps) * i;
+    const y = p.s * p.A * Math.pow(k, ALPHA);
+    if (y > Y_MAX) {
+      if (started) ctx.lineTo(toX(k), toY(Y_MAX));
+      break;
+    }
+    !started ? (ctx.moveTo(toX(k), toY(y)), started = true) : ctx.lineTo(toX(k), toY(y));
+  }
+  ctx.stroke();
+
+  // δ·k
+  ctx.beginPath();
+  ctx.strokeStyle = COL.breakeven;
+  ctx.lineWidth = 2;
+  ctx.setLineDash([8, 5]);
+  const kAtYMax = Y_MAX / p.delta;
+  ctx.moveTo(toX(0), toY(0));
+  ctx.lineTo(toX(Math.min(K_MAX, kAtYMax)), toY(Math.min(Y_MAX, p.delta * K_MAX)));
+  ctx.stroke();
+  ctx.setLineDash([]);
+
+  // Steady-state marker
+  if (ss.kStar <= K_MAX && ss.kStar > 0) {
+    const ssX = toX(ss.kStar);
+    const fk = p.A * Math.pow(ss.kStar, ALPHA);       // y* = f(k*)
+    const sfk = p.s * fk;                              // s·f(k*) = investment
+    const yPx = toY(Math.min(fk, Y_MAX));              // pixel y of y*
+    const invPx = toY(Math.min(sfk, Y_MAX));           // pixel y of investment
+
+    // ── y* horizontal dashed line from y-axis to f(k*) ──
+    if (fk <= Y_MAX) {
+      ctx.beginPath();
+      ctx.strokeStyle = COL.production;
+      ctx.lineWidth = 1;
+      ctx.setLineDash([4, 4]);
+      ctx.moveTo(ml, yPx);
+      ctx.lineTo(ssX, yPx);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // y* dot on f(k)
+      ctx.beginPath();
+      ctx.arc(ssX, yPx, 5, 0, Math.PI * 2);
+      ctx.fillStyle = COL.production;
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(ssX, yPx, 2.5, 0, Math.PI * 2);
+      ctx.fillStyle = '#fff';
+      ctx.fill();
+
+      // y* label on y-axis
+      ctx.font = 'italic 13px "Newsreader", Georgia, serif';
+      ctx.fillStyle = COL.production;
+      ctx.textAlign = 'right';
+      ctx.fillText('y*', ml - 8, yPx - 6);
+    }
+
+    // ── c* bracket: vertical segment between f(k*) and s·f(k*) at k* ──
+    if (fk <= Y_MAX && sfk <= Y_MAX) {
+      // Shaded consumption band between the two curves at k*
+      ctx.beginPath();
+      ctx.fillStyle = 'rgba(58, 125, 92, 0.07)';
+      ctx.rect(ssX - 16, yPx, 32, invPx - yPx);
+      ctx.fill();
+
+      // Bracket line slightly to the right of k*
+      const bx = ssX + 20;
+      ctx.beginPath();
+      ctx.strokeStyle = COL.breakeven;
+      ctx.lineWidth = 1.5;
+      ctx.setLineDash([]);
+      // Top tick
+      ctx.moveTo(bx - 4, yPx);
+      ctx.lineTo(bx, yPx);
+      // Vertical line
+      ctx.lineTo(bx, invPx);
+      // Bottom tick
+      ctx.lineTo(bx - 4, invPx);
+      ctx.stroke();
+
+      // c* label
+      const midPx = (yPx + invPx) / 2;
+      ctx.font = 'italic 14px "Newsreader", Georgia, serif';
+      ctx.fillStyle = COL.breakeven;
+      ctx.textAlign = 'left';
+      ctx.fillText('c*', bx + 6, midPx + 5);
+    }
+
+    // ── Vertical dashed line from x-axis up to f(k*) ──
+    ctx.beginPath();
+    ctx.strokeStyle = COL.ssLine;
+    ctx.lineWidth = 1;
+    ctx.setLineDash([4, 4]);
+    ctx.moveTo(ssX, mt + ph);
+    ctx.lineTo(ssX, Math.min(invPx, yPx));
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Investment dot on s·f(k)
+    ctx.beginPath();
+    ctx.arc(ssX, invPx, 6, 0, Math.PI * 2);
+    ctx.fillStyle = COL.savings;
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(ssX, invPx, 3, 0, Math.PI * 2);
+    ctx.fillStyle = '#fff';
+    ctx.fill();
+
+    // k* label on x-axis
+    ctx.font = 'italic 14px "Newsreader", Georgia, serif';
+    ctx.fillStyle = COL.text;
+    ctx.textAlign = 'center';
+    ctx.fillText('k*', ssX, mt + ph + 34);
+  }
+
+  // Steady-state values
+  const fmt = v => v > 9999 ? '> 9999' : v.toFixed(2);
+  document.getElementById('ss-k').textContent = fmt(ss.kStar);
+  document.getElementById('ss-y').textContent = fmt(ss.yStar);
+  document.getElementById('ss-c').textContent = fmt(ss.cStar);
+}
+
+Object.keys(sliders).forEach(key => {
+  sliders[key].addEventListener('input', () => {
+    vals[key].textContent = (+sliders[key].value).toFixed(2);
+    draw();
+  });
+});
+
+window.addEventListener('resize', draw);
+draw();
+</script>
+
+</body>
+</html>
