@@ -34,6 +34,13 @@ title: "Teaching"
           <a href="/files/teaching/slides/12_AS_Curve_Phillips_Curve.pdf">Aggregate Supply Curve and Phillips Curve</a>
         </div>
       </details>
+      <details class="slides-expand">
+        <summary class="slides-toggle">Tools ▸</summary>
+        <div class="slides-list">
+          <a href="/Solow_ss_app/" target="_blank">Solow Steady State App</a>
+          <a href="/golden_rule_solow_3.html" target="_blank">Solow Golden Rule App</a>
+        </div>
+      </details>
     </div>
 </details>
 
