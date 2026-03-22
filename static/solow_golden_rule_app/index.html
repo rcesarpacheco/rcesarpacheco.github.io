@@ -83,13 +83,39 @@
     display: grid;
     grid-template-columns: 260px 1fr 1fr;
     gap: 24px;
-    align-items: start;
+    align-items: stretch;
     animation: fadeUp 0.6s ease-out 0.1s both;
+  }
+
+  .chart-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .chart-card .chart-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  .chart-card canvas {
+    width: 100%;
   }
 
   @media (max-width: 1000px) {
     .layout {
       grid-template-columns: 1fr;
+      align-items: start;
+    }
+    .controls {
+      position: static;
+      order: 3;
+    }
+    .chart-card:first-of-type {
+      order: 1;
+    }
+    .chart-card:last-of-type {
+      order: 2;
     }
   }
 
@@ -98,6 +124,7 @@
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: var(--radius);
+    align-self: start;
     padding: 28px 24px;
     box-shadow: var(--shadow);
     position: sticky;
@@ -369,7 +396,7 @@
   @media (max-width: 600px) {
     .app { padding: 28px 16px 48px; }
     header h1 { font-size: 26px; }
-    .controls { position: static; }
+    header { margin-bottom: 28px; }
     .ss-output { grid-template-columns: 1fr; }
     .ss-item { border-right: none; border-bottom: 1px solid var(--border-light); }
     .ss-item:last-child { border-bottom: none; }
@@ -548,23 +575,39 @@ function goldenRule(alpha) {
 }
 
 // ── Canvas helpers ──
-function setupCanvas(canvas) {
+function setupCanvasSolow(canvas) {
   const rect = canvas.parentElement.getBoundingClientRect();
   const w = rect.width - 48;
+  const ratio = w < 400 ? 0.9 : 0.7;
+  const h = w * ratio;
   const dpr = window.devicePixelRatio || 1;
   canvas.style.width = w + 'px';
-  canvas.style.height = (w * 0.7) + 'px';
+  canvas.style.height = h + 'px';
   canvas.width = w * dpr;
-  canvas.height = w * 0.7 * dpr;
+  canvas.height = h * dpr;
   const ctx = canvas.getContext('2d');
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  return { ctx, w, h: w * 0.7 };
+  return { ctx, w, h };
+}
+
+function setupCanvasGolden(canvas) {
+  const rect = canvas.parentElement.getBoundingClientRect();
+  const w = rect.width - 48;
+  const h = Math.max(rect.height - 28, w * 0.5);
+  const dpr = window.devicePixelRatio || 1;
+  canvas.style.width = w + 'px';
+  canvas.style.height = h + 'px';
+  canvas.width = w * dpr;
+  canvas.height = h * dpr;
+  const ctx = canvas.getContext('2d');
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  return { ctx, w, h };
 }
 
 // ── Draw Solow Diagram ──
 function drawSolow() {
   const canvas = document.getElementById('chart-solow');
-  const { ctx, w, h } = setupCanvas(canvas);
+  const { ctx, w, h } = setupCanvasSolow(canvas);
   const p = getParams();
   const ss = steadyState(p.s, p.alpha);
   const gr = goldenRule(p.alpha);
@@ -603,7 +646,7 @@ function drawSolow() {
   ctx.fillStyle = COL.textMuted;
   ctx.font = '12px "Newsreader", Georgia, serif';
   ctx.textAlign = 'center';
-  ctx.fillText('k  (capital per worker)', ml + pw / 2, h - 4);
+  ctx.fillText('k', toX(K_MAX), mt + ph + 30);
   ctx.textAlign = 'left';
   ctx.fillText('y, i', ml - 4, mt - 10);
 
@@ -613,11 +656,6 @@ function drawSolow() {
   ctx.textAlign = 'center';
   for (let i = 0; i <= 5; i++) {
     ctx.fillText(((K_MAX / 5) * i).toFixed(0), toX((K_MAX / 5) * i), mt + ph + 16);
-  }
-  ctx.textAlign = 'right';
-  for (let i = 0; i <= nGridY; i++) {
-    const val = (Y_MAX / nGridY) * (nGridY - i);
-    ctx.fillText(val.toFixed(0), ml - 7, mt + (ph / nGridY) * i + 4);
   }
 
   const steps = 500;
@@ -802,7 +840,7 @@ function drawSolow() {
 // ── Draw Golden Rule chart ──
 function drawGolden() {
   const canvas = document.getElementById('chart-golden');
-  const { ctx, w, h } = setupCanvas(canvas);
+  const { ctx, w, h } = setupCanvasGolden(canvas);
   const p = getParams();
   const gr = goldenRule(p.alpha);
 
@@ -856,11 +894,6 @@ function drawGolden() {
   for (let i = 0; i <= 5; i++) {
     const s = (i / 5);
     ctx.fillText(s.toFixed(1), toX(s), mt + ph + 16);
-  }
-  ctx.textAlign = 'right';
-  for (let i = 0; i <= nGridY; i++) {
-    const val = (cYMax / nGridY) * (nGridY - i);
-    ctx.fillText(val.toFixed(1), ml - 7, mt + (ph / nGridY) * i + 4);
   }
 
   // c*(s) curve
