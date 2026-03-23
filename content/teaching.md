@@ -10,7 +10,7 @@ title: "Teaching"
       <span class="ta-banner-title">Intermediate Macroeconomics</span>
       <span class="ta-banner-score">Columbia University · Summers 2024, 2025 · Evaluations: 4.9/5.0 (avg.)</span>
     </span>
-    <span class="ta-banner-arrow">▸</span>
+    <span class="ta-banner-arrow"></span>
   </summary>
   <div class="ta-collapse-body">
     <p class="paper-abstract" style="margin-bottom: 0.8rem;">Undergraduate course covering national income accounting, the classical closed-economy model, money and inflation, unemployment, the Solow growth model, economic fluctuations, the IS-LM model, and the aggregate supply curve and Phillips curve.</p>
@@ -18,7 +18,7 @@ title: "Teaching"
       <a href="/files/teaching/IntMacro_Syllabus_2025.pdf">Syllabus</a>
       <a href="/files/teaching/evals/Pacheco_Summer_Teaching_Evaluations.pdf">Teaching evaluations</a>
       <details class="slides-expand">
-        <summary class="slides-toggle">Lecture slides ▸</summary>
+        <summary class="slides-toggle">Lecture slides</summary>
         <div class="slides-list">
           <a href="/files/teaching/slides/01_Introduction.pdf">Introduction</a>
           <a href="/files/teaching/slides/02_Data_of_Macroeconomics.pdf">The Data of Macroeconomics</a>
@@ -35,7 +35,7 @@ title: "Teaching"
         </div>
       </details>
       <details class="slides-expand">
-        <summary class="slides-toggle">Tools ▸</summary>
+        <summary class="slides-toggle">Tools</summary>
         <div class="slides-list">
           <a href="/Solow_ss_app/" target="_blank">Solow Steady State App</a>
           <a href="/solow_golden_rule_app/" target="_blank">Solow Golden Rule App</a>
@@ -52,7 +52,7 @@ title: "Teaching"
       <span class="ta-banner-title">Columbia University</span>
       <span class="ta-banner-score">Evaluations: 4.7/5.0 (avg.)</span>
     </span>
-    <span class="ta-banner-arrow">▸</span>
+    <span class="ta-banner-arrow"></span>
   </summary>
   <div class="ta-collapse-body">
     <table>
@@ -71,7 +71,7 @@ title: "Teaching"
     <span class="ta-banner-text">
       <span class="ta-banner-title">University of São Paulo</span>
     </span>
-    <span class="ta-banner-arrow">▸</span>
+    <span class="ta-banner-arrow"></span>
   </summary>
   <div class="ta-collapse-body">
     <table>

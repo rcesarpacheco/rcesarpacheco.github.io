@@ -85,10 +85,6 @@
     animation: fadeUp 0.6s ease-out 0.1s both;
   }
 
-  @media (max-width: 860px) {
-    .layout { grid-template-columns: 1fr; }
-  }
-
   .controls {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -97,6 +93,28 @@
     box-shadow: var(--shadow);
     position: sticky;
     top: 24px;
+  }
+
+  @media (max-width: 860px) {
+    .layout {
+      grid-template-columns: 1fr;
+    }
+    .controls {
+      position: static;
+      order: 2;
+    }
+    .chart-area {
+      order: 1;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .app { padding: 28px 16px 48px; }
+    header h1 { font-size: 26px; }
+    header { margin-bottom: 28px; }
+    .ss-output { grid-template-columns: 1fr; }
+    .ss-item { border-right: none; border-bottom: 1px solid var(--border-light); }
+    .ss-item:last-child { border-bottom: none; }
   }
 
   .controls h2 {
@@ -472,13 +490,14 @@ function steadyState(p) {
 function setCanvasSize() {
   const rect = canvas.parentElement.getBoundingClientRect();
   const w = rect.width - 56;
+  const ratio = w < 500 ? 0.8 : 0.58;
   const dpr = window.devicePixelRatio || 1;
   canvas.style.width = w + 'px';
-  canvas.style.height = (w * 0.58) + 'px';
+  canvas.style.height = (w * ratio) + 'px';
   canvas.width = w * dpr;
-  canvas.height = w * 0.58 * dpr;
+  canvas.height = w * ratio * dpr;
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  return { w, h: w * 0.58 };
+  return { w, h: w * ratio };
 }
 
 function draw() {
@@ -486,7 +505,7 @@ function draw() {
   const p = getParams();
   const ss = steadyState(p);
 
-  const ml = 52, mr = 24, mt = 20, mb = 44;
+  const ml = 52, mr = 24, mt = 36, mb = 44;
   const pw = w - ml - mr;
   const ph = h - mt - mb;
 
@@ -520,12 +539,9 @@ function draw() {
   ctx.fillStyle = COL.textMuted;
   ctx.font = '13px "Newsreader", Georgia, serif';
   ctx.textAlign = 'center';
-  ctx.fillText('k  (capital per worker)', ml + pw / 2, h - 4);
-  ctx.save();
-  ctx.translate(14, mt + ph / 2);
-  ctx.rotate(-Math.PI / 2);
-  ctx.fillText('y, investment', 0, 0);
-  ctx.restore();
+  ctx.fillText('k', toX(K_MAX), mt + ph + 32);
+  ctx.textAlign = 'left';
+  ctx.fillText('y, i', ml - 4, mt - 10);
 
   // Fixed tick labels
   ctx.font = '11px "JetBrains Mono", monospace';
@@ -533,11 +549,6 @@ function draw() {
   ctx.textAlign = 'center';
   for (let i = 0; i <= 5; i++) {
     ctx.fillText(((K_MAX / 5) * i).toFixed(0), toX((K_MAX / 5) * i), mt + ph + 18);
-  }
-  ctx.textAlign = 'right';
-  for (let i = 0; i <= nGridY; i++) {
-    const val = (Y_MAX / nGridY) * (nGridY - i);
-    ctx.fillText(val.toFixed(0), ml - 8, mt + (ph / nGridY) * i + 4);
   }
 
   const steps = 500;

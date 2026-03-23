@@ -536,6 +536,15 @@ a:hover {
   color: var(--color-accent);
 }
 
+.slides-toggle::after {
+  content: ' +';
+  font-weight: 700;
+}
+
+details[open] > .slides-toggle::after {
+  content: ' −';
+}
+
 details[open] > .slides-toggle {
   border-color: var(--color-accent);
   color: var(--color-accent);
@@ -615,14 +624,15 @@ details[open] > .slides-toggle {
   color: var(--color-text-muted);
 }
 
-.ta-banner-arrow {
-  font-size: 1rem;
+.ta-banner-arrow::after {
+  content: '+';
+  font-size: 1.1rem;
   color: var(--color-accent);
-  transition: transform 0.2s;
+  font-weight: 600;
 }
 
-details[open] .ta-banner-arrow {
-  transform: rotate(90deg);
+details[open] .ta-banner-arrow::after {
+  content: '−';
 }
 
 details[open] > .ta-banner {
