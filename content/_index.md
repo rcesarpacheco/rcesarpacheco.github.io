@@ -6,7 +6,7 @@ Welcome! I am a PhD candidate in the Department of Economics at Columbia Univers
 
 You can contact me at [rodrigo.pacheco@columbia.edu](mailto:rodrigo.pacheco@columbia.edu).
 
-Please click [here](/files/Pacheco_CV.pdf) for my CV.
+Please click [here](/pdfjs/web/viewer.html?file=/files/Pacheco_CV.pdf) for my CV.
 
 ### Research interests
 
