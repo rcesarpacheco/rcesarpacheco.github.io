@@ -5,10 +5,8 @@ title: "Research"
 ### Working papers
 
 <div class="paper">
-  <div class="paper-title-row">
-    <span class="jmp-badge">Job market paper</span>
-    <span class="paper-title">Information, Coordination and Welfare in Equity Financing</span>
-  </div>
+  <!-- <span class="jmp-badge">Job market paper</span> -->
+  <div class="paper-title">Information, Coordination and Welfare in Equity Financing</div>
   <!-- <div class="paper-abstract">[Add your abstract here.]</div> -->
 </div>
 
