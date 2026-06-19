@@ -1,0 +1,9 @@
+# Hugo build output
+public/
+resources/
+
+# macOS
+.DS_Store
+
+# Misc
+.Rhistory
