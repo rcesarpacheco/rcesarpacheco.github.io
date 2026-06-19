@@ -89,6 +89,6 @@ title: "Teaching"
 </details>
 
 ### Teaching awards
-
-- **Wueller Teaching Award**, Columbia University, 2023
+- **Presidential Award for Outstanding Teaching, Finalist**, Columbia University, 2026
 - **Wueller Teaching Award, Runner-up**, Columbia University, 2024
+- **Wueller Teaching Award**, Columbia University, 2023
