@@ -1,5 +1,12 @@
 {{ define "main" }}
-<div class="page-content home">
-  {{ .Content }}
+<div class="about">
+  <div class="about-photo">
+    {{ if .Site.Params.photo }}
+      <img src="{{ .Site.Params.photo }}" alt="{{ .Site.Params.name }}">
+    {{ end }}
+  </div>
+  <div class="about-body">
+    {{ .Content }}
+  </div>
 </div>
 {{ end }}
