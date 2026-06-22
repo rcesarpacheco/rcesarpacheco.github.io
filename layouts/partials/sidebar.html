@@ -5,11 +5,17 @@
       <a class="bar-email" href="mailto:{{ .Site.Params.email }}" title="Email {{ .Site.Params.name }}" aria-label="Send email to {{ .Site.Params.name }}">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 4 12 13 2 4"/></svg>
       </a>
+      {{ if .Site.Params.linkedin }}
+      <a class="bar-email" href="{{ .Site.Params.linkedin }}" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn profile">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      {{ end }}
     </div>
     <nav class="top" aria-label="Primary">
       {{ range .Site.Menus.main }}
         <a href="{{ .URL }}"{{ if eq $.RelPermalink .URL }} class="active" aria-current="page"{{ end }}>{{ .Name }}</a>
       {{ end }}
+      <a href="{{ .Site.Params.cv_pdf }}" target="_blank" rel="noopener">CV</a>
     </nav>
   </div>
 </header>

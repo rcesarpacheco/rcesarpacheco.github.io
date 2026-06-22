@@ -82,7 +82,7 @@ a:hover {
 .brand {
   font-family: var(--font-body);
   font-weight: 700;
-  font-size: 17px;
+  font-size: 20px;
   letter-spacing: -0.01em;
   color: var(--ink);
   text-decoration: none;
@@ -109,6 +109,10 @@ a:hover {
 .bar-email:hover {
   color: var(--accent);
   text-decoration: none;
+}
+
+.bar-email svg {
+  display: block;
 }
 
 nav.top {
@@ -165,6 +169,27 @@ nav.top a.active {
   margin-bottom: 1rem;
 }
 
+/* CV download button */
+.cv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--accent);
+  border: 1.5px solid var(--accent);
+  border-radius: 10px;
+  padding: 9px 18px;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+  margin-bottom: 4px;
+}
+
+.cv-btn:hover {
+  background: var(--accent-soft);
+  text-decoration: none;
+}
+
 /* eyebrow label for "Research interests" */
 .about-body h3 {
   font-family: var(--font-body);
@@ -192,7 +217,7 @@ nav.top a.active {
   font-weight: 500;
   background: var(--accent-soft);
   color: var(--accent);
-  border-radius: 999px;
+  border-radius: 10px;
   padding: 6px 15px;
 }
 

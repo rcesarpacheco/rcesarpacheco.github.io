@@ -15,7 +15,7 @@ theme = ""
   graduation_year = "2027"
   google_scholar = ""
   github = ""
-  linkedin = ""
+  linkedin = "https://www.linkedin.com/in/rodrigo-pacheco-048a78b4/"
 
 [menu]
   [[menu.main]]
