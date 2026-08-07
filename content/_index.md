@@ -2,7 +2,7 @@
 title: "Home"
 ---
 
-Welcome! I am a PhD candidate in the Department of Economics at Columbia University. My research interests include macroeconomics, finance, and banking.
+Welcome! I am a PhD candidate in the Department of Economics at Columbia University. My research interests include <span class="interest">macroeconomics</span>, <span class="interest">finance</span>, and <span class="interest">banking</span>.
 
 You can contact me at [rodrigo.pacheco@columbia.edu](mailto:rodrigo.pacheco@columbia.edu).
 
@@ -11,10 +11,3 @@ You can contact me at [rodrigo.pacheco@columbia.edu](mailto:rodrigo.pacheco@colu
   Download CV (PDF)
 </a>
 
-### Research interests
-
-<div class="research-fields">
-  <span class="field-tag info">Macroeconomics</span>
-  <span class="field-tag blue">Finance</span>
-  <span class="field-tag teal">Banking</span>
-</div>

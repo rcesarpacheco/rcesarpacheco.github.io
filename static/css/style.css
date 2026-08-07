@@ -201,24 +201,11 @@ nav.top a.active {
   margin: 26px 0 12px;
 }
 
-/* ---- Research interest tags ---- */
+/* ---- Inline research interest emphasis ---- */
 
-.research-fields {
-  display: flex;
-  gap: 9px;
-  flex-wrap: wrap;
-}
-
-.field-tag,
-.field-tag.info,
-.field-tag.teal,
-.field-tag.blue {
-  font-size: 14px;
-  font-weight: 500;
-  background: var(--accent-soft);
+.interest {
   color: var(--accent);
-  border-radius: 10px;
-  padding: 6px 15px;
+  font-weight: 600;
 }
 
 /* ---- Page content — Research & Teaching ---- */
