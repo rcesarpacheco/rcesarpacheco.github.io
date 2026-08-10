@@ -18,7 +18,7 @@ title: "Teaching"
       <a href="/files/teaching/IntMacro_Syllabus_2025.pdf" target="_blank">Syllabus</a>
       <a href="/files/teaching/evals/Pacheco_Summer_Teaching_Evaluations.pdf" target="_blank">Teaching evaluations</a>
       <details class="slides-expand">
-        <summary class="slides-toggle">Lecture slides</summary>
+        <summary class="slides-toggle">Lecture Notes</summary>
         <div class="slides-list">
           <a href="/files/teaching/slides/01_Introduction.pdf" target="_blank">Introduction</a>
           <a href="/files/teaching/slides/02_Data_of_Macroeconomics.pdf" target="_blank">The Data of Macroeconomics</a>
