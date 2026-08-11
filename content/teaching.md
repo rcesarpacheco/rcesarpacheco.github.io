@@ -13,9 +13,9 @@ title: "Teaching"
     <span class="ta-banner-arrow"></span>
   </summary>
   <div class="ta-collapse-body">
-    <p class="paper-abstract" style="margin-bottom: 0.8rem;">Undergraduate course covering national income accounting, the classical closed-economy model, money and inflation, unemployment, the Solow growth model, economic fluctuations, the IS-LM model, and the aggregate supply curve and Phillips curve.</p>
+    <p class="paper-abstract" style="margin-bottom: 0.8rem;">Undergraduate course covering national income accounting, the closed-economy model, money and inflation, unemployment, the Solow growth model, the IS-LM model, the aggregate supply curve and Phillips curve.</p>
     <div class="course-materials">
-      <a href="/files/teaching/IntMacro_Syllabus_2025.pdf" target="_blank">Syllabus</a>
+      <a href="/files/teaching/IntMacro_Syllabus_2026.pdf" target="_blank">Syllabus</a>
       <a href="/files/teaching/evals/Pacheco_Summer_Teaching_Evaluations.pdf" target="_blank">Teaching evaluations</a>
       <details class="slides-expand">
         <summary class="slides-toggle">Lecture Notes</summary>
@@ -42,6 +42,7 @@ title: "Teaching"
         </div>
       </details>
     </div>
+  </div>
 </details>
 
 ### Teaching assistant
