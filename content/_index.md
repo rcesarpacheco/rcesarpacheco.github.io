@@ -2,7 +2,7 @@
 title: "Home"
 ---
 
-Welcome! I am a PhD candidate in the Department of Economics at Columbia University. My research interests include <span class="interest">macroeconomics</span> and <span class="interest">finance</span>.
+Welcome! I am a PhD candidate in the Department of Economics at Columbia University. **I am on the 2026–2027 job market.** My research interests include <span class="interest">macroeconomics</span> and <span class="interest">finance</span>.
 
 You can contact me at [rodrigo.pacheco@columbia.edu](mailto:rodrigo.pacheco@columbia.edu).
 
