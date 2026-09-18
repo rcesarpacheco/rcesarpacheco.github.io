@@ -254,6 +254,19 @@ nav.top a.active {
   border-left: 3px solid var(--rule);
 }
 
+.jmp-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: 5px;
+  padding: 2px 8px;
+  margin-bottom: 0.4rem;
+}
+
 .paper-title {
   font-family: var(--font-serif);
   font-size: 1.05rem;
@@ -273,10 +286,94 @@ nav.top a.active {
   margin-bottom: 0.2rem;
 }
 
+.paper-venue {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
 .paper-abstract {
   font-size: 0.88rem;
   color: var(--muted);
   line-height: 1.6;
+}
+
+/* ---- Collapsible paper abstracts ---- */
+
+.abstract-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  transition: color 0.15s;
+}
+
+.abstract-toggle::-webkit-details-marker {
+  display: none;
+}
+
+.abstract-toggle:hover {
+  color: var(--accent);
+}
+
+.abstract-toggle::after {
+  content: '';
+  flex-shrink: 0;
+  width: 5px;
+  height: 5px;
+  border: solid currentColor;
+  border-width: 0 1.5px 1.5px 0;
+  transform: rotate(45deg);
+  margin-top: -3px;
+  transition: transform 0.2s;
+}
+
+details[open] > .abstract-toggle {
+  color: var(--accent);
+}
+
+details[open] > .abstract-toggle::after {
+  transform: rotate(-135deg);
+  margin-top: 1px;
+}
+
+.paper-collapse > .paper-abstract {
+  margin-top: 0.35rem;
+}
+
+/* ---- Paper link row: draft, slides, appendix ---- */
+
+.paper-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin: 0.35rem 0 0.4rem;
+}
+
+.paper-links a {
+  font-size: 13px;
+  font-weight: 500;
+  background: var(--soft);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 3px 10px;
+  color: var(--ink);
+  text-decoration: none;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.paper-links a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  text-decoration: none;
 }
 
 /* ---- Course materials link row ---- */

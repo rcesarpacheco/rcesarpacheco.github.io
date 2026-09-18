@@ -1,4 +1,4 @@
-# rodrigopacheco.com
+# rcpacheco.com
 
 Personal academic website — Hugo + GitHub Pages.
 
@@ -63,7 +63,7 @@ Edit `config.toml` to set your real email, links, etc.
 
 ## Deploy to GitHub Pages
 
-1. Create a GitHub repo (e.g., `rodrigopacheco.github.io` or any name)
+1. Create a GitHub repo (this site lives at `rcesarpacheco/rcesarpacheco.github.io`)
 2. Push this project to the repo
 3. Go to **Settings → Pages → Source** → select **GitHub Actions**
 4. The included `.github/workflows/hugo.yml` will auto-deploy on every push
@@ -76,10 +76,10 @@ Edit `config.toml` to set your real email, links, etc.
    - A record: `185.199.109.153`
    - A record: `185.199.110.153`
    - A record: `185.199.111.153`
-   - CNAME for `www`: `rodrigopacheco.github.io`
-3. In GitHub repo → **Settings → Pages → Custom domain**: enter `rodrigopacheco.com`
+   - CNAME for `www`: `rcesarpacheco.github.io`
+3. In GitHub repo → **Settings → Pages → Custom domain**: enter `rcpacheco.com`
 4. Check "Enforce HTTPS"
-5. Update `baseURL` in `config.toml`
+5. Keep `baseURL` in `config.toml` and `static/CNAME` in sync with the domain (both currently `rcpacheco.com`)
 
 ## Structure
 
