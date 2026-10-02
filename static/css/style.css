@@ -350,30 +350,43 @@ details[open] > .abstract-toggle::after {
 
 /* ---- Paper link row: draft, slides, appendix ---- */
 
-.paper-links {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px;
-  margin: 0.35rem 0 0.4rem;
+/* Links float left so the Abstract toggle sits on the same line. */
+.paper {
+  display: flow-root;
 }
 
+.paper-links {
+  float: left;
+  display: flex;
+  gap: 14px;
+  margin-right: 14px;
+}
+
+/* Same type as .abstract-toggle */
 .paper-links a {
-  font-size: 13px;
-  font-weight: 500;
-  background: var(--soft);
-  border: 1px solid var(--rule);
-  border-radius: 6px;
-  padding: 3px 10px;
-  color: var(--ink);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
   text-decoration: none;
-  transition: border-color 0.15s, color 0.15s;
+  transition: color 0.15s;
 }
 
 .paper-links a:hover {
-  border-color: var(--accent);
   color: var(--accent);
   text-decoration: none;
+}
+
+/* Match the toggle's line box so it lines up with the floated links. */
+.paper-collapse {
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.paper-collapse > .paper-abstract {
+  clear: left;
 }
 
 /* ---- Course materials link row ---- */
