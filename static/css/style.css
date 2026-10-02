@@ -346,6 +346,8 @@ details[open] > .abstract-toggle::after {
 
 .paper-collapse > .paper-abstract {
   margin-top: 0.35rem;
+  text-align: justify;
+  hyphens: auto;
 }
 
 /* ---- Paper link row: draft, slides, appendix ---- */
