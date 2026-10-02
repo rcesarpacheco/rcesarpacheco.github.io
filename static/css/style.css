@@ -369,14 +369,12 @@ details[open] > .abstract-toggle::after {
   line-height: 1.6;
   letter-spacing: 0.07em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--accent);
   text-decoration: none;
-  transition: color 0.15s;
 }
 
 .paper-links a:hover {
-  color: var(--accent);
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 /* Match the toggle's line box so it lines up with the floated links. */
