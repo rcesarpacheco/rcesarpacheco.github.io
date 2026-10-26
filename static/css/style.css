@@ -172,13 +172,13 @@ nav.top a.active {
 .cv-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-size: 15px;
+  gap: 6px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--accent);
   border: 1.5px solid var(--accent);
-  border-radius: 10px;
-  padding: 9px 18px;
+  border-radius: 8px;
+  padding: 5px 12px;
   text-decoration: none;
   transition: background 0.15s, color 0.15s;
   margin-bottom: 4px;
@@ -308,7 +308,7 @@ nav.top a.active {
   font-weight: 600;
   letter-spacing: 0.07em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--accent);
   cursor: pointer;
   list-style: none;
   user-select: none;
@@ -366,6 +366,9 @@ details[open] > .abstract-toggle::after {
 
 /* Same type as .abstract-toggle */
 .paper-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   font-size: 12px;
   font-weight: 600;
   line-height: 1.6;
@@ -373,10 +376,14 @@ details[open] > .abstract-toggle::after {
   text-transform: uppercase;
   color: var(--accent);
   text-decoration: none;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  padding: 0 8px;
+  transition: background 0.15s;
 }
 
 .paper-links a:hover {
-  text-decoration: underline;
+  background: var(--accent-soft);
 }
 
 /* Match the toggle's line box so it lines up with the floated links. */
