@@ -2,23 +2,22 @@
 title: "Research"
 ---
 
-### Working papers
+### Job market paper
 
 <div class="paper">
-  <span class="jmp-badge">Job market paper</span>
   <div class="paper-title">Priced Out: Financing Frictions and Startup Mortality</div>
   <div class="paper-coauthors">with Madhav Malhotra</div>
-  <!--
   <div class="paper-links">
-    <a href="/files/papers/Pacheco_JMP.pdf" target="_blank">Paper</a>
-    <a href="/files/papers/Pacheco_JMP_Slides.pdf" target="_blank">Slides</a>
+    <!-- <a href="/files/papers/pacheco_priced_out.pdf" target="_blank"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>Paper</a> -->
+    <!-- <a href="/files/papers/Pacheco_JMP_Slides.pdf" target="_blank"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h20"/><path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3"/><path d="m7 21 5-5 5 5"/></svg>Slides</a> -->
   </div>
-  <details class="paper-collapse">
+  <details class="paper-collapse" open>
     <summary class="abstract-toggle">Abstract</summary>
-    <div class="paper-abstract">[Add your abstract here.]</div>
+    <div class="paper-abstract">Startups raise equity in a sequence of financing rounds, and most of them are led by an investor new to the firm, who bargains with its current owners over the share of the firm it receives for the capital it provides. We ask whether investors' bargaining power causes inefficient startup failures and, if so, how many. We model equity financing as a dynamic game and show that inefficient failures arise precisely when future investors have bargaining power. Bargaining power at the current round only changes how the round's surplus is divided. However, those who decide whether to fund the firm today treat the surplus that future investors will capture as a loss, so they let firms that are worth funding fail. Using PitchBook data on US venture-backed startups, we find that in otherwise similar rounds, owners keep 1.85% less of the firm when a new investor, rather than a current owner, leads the round. The model identifies this gap as new investors' bargaining power. Although small, it causes 7.1% of startup failures, and six in ten of these firms would otherwise go public or be acquired.</div>
   </details>
-  -->
 </div>
+
+### Working papers
 
 <div class="paper">
   <div class="paper-title">When Does Disclosure Help? Information and Coordination in Equity Financing</div>
