@@ -14,6 +14,12 @@
       document.querySelectorAll('details.slides-expand[open]').forEach(function(d) {
         if (!d.contains(e.target)) d.removeAttribute('open');
       });
+      var toggle = e.target.closest('.abstract-toggle');
+      if (toggle) {
+        var open = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!open));
+        toggle.closest('.paper').querySelector('.paper-abstract').hidden = open;
+      }
     });
   </script>
   <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3e88e44a33184290813314a61d68a652"}'></script><!-- End Cloudflare Web Analytics -->

@@ -59,9 +59,9 @@ title: "Teaching"
     <table>
       <thead><tr><th>Course</th><th>Semester</th><th>Evaluations</th></tr></thead>
       <tbody>
-        <tr><td>Intermediate Macroeconomics (UG)</td><td>Fall 2022, Fall 2023, Spring 2024, Fall 2024, Spring 2025</td><td><a href="/files/teaching/evals/IntMacro_TA_Evals.pdf" target="_blank" class="ta-eval-btn">View</a></td></tr>
-        <tr><td>Advanced Macroeconomics (UG)</td><td>Fall 2025</td><td><a href="/files/teaching/evals/AdvMacro_TA_Evals.pdf" target="_blank" class="ta-eval-btn">View</a></td></tr>
-        <tr><td>Macroeconomic Analysis II (MA)</td><td>Spring 2023</td><td><a href="/files/teaching/evals/MacroAnalysis_TA_Evals.pdf" target="_blank" class="ta-eval-btn">View</a></td></tr>
+        <tr><td>Intermediate Macroeconomics (UG)</td><td>Fall 2022, Fall 2023, Spring 2024, Fall 2024, Spring 2025</td><td><a href="/files/teaching/evals/IntMacro_TA_Evals.pdf" target="_blank" class="ta-eval-btn"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>View</a></td></tr>
+        <tr><td>Advanced Macroeconomics (UG)</td><td>Fall 2025</td><td><a href="/files/teaching/evals/AdvMacro_TA_Evals.pdf" target="_blank" class="ta-eval-btn"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>View</a></td></tr>
+        <tr><td>Macroeconomic Analysis II (MA)</td><td>Spring 2023</td><td><a href="/files/teaching/evals/MacroAnalysis_TA_Evals.pdf" target="_blank" class="ta-eval-btn"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>View</a></td></tr>
       </tbody>
     </table>
   </div>
