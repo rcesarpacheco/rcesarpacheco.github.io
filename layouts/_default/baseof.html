@@ -11,9 +11,6 @@
   <link rel="stylesheet" href="/css/style.css?v={{ now.Unix }}">
   <script>
     document.addEventListener('click', function(e) {
-      document.querySelectorAll('details.slides-expand[open]').forEach(function(d) {
-        if (!d.contains(e.target)) d.removeAttribute('open');
-      });
       var toggle = e.target.closest('.abstract-toggle');
       if (toggle) {
         var open = toggle.getAttribute('aria-expanded') === 'true';

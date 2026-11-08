@@ -49,7 +49,7 @@ a:hover {
 /* ---- Layout ---- */
 
 .wrap {
-  max-width: 1040px;
+  max-width: 840px;
   margin: 0 auto;
   padding: 0 32px;
 }
@@ -71,7 +71,7 @@ a:hover {
 }
 
 .bar-inner {
-  max-width: 1040px;
+  max-width: 840px;
   margin: 0 auto;
   padding: 15px 32px;
   display: flex;
@@ -376,8 +376,7 @@ nav.top a.active {
   align-items: center;
 }
 
-.course-materials > a,
-.slides-toggle {
+.course-materials > a {
   position: relative;
   font-size: 12px;
   font-weight: 600;
@@ -389,13 +388,11 @@ nav.top a.active {
   text-underline-offset: 3px;
 }
 
-.course-materials > a:hover,
-.slides-toggle:hover {
+.course-materials > a:hover {
   text-decoration: underline;
 }
 
-.course-materials > a:not(:first-child)::before,
-.course-materials > details:not(:first-child) > .slides-toggle::before {
+.course-materials > a:not(:first-child)::before {
   content: '·';
   position: absolute;
   left: -10px;
@@ -404,154 +401,86 @@ nav.top a.active {
   pointer-events: none;
 }
 
-/* ---- Expandable lecture-slide dropdowns ---- */
+/* ---- Teaching: course blocks ---- */
 
-.slides-expand {
-  display: inline-block;
-  vertical-align: top;
-  position: relative;
-}
-
-.slides-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  cursor: pointer;
-  list-style: none;
-  user-select: none;
-}
-
-.slides-toggle::-webkit-details-marker {
-  display: none;
-}
-
-.slides-toggle::after {
-  content: '';
-  flex-shrink: 0;
-  width: 5px;
-  height: 5px;
-  border: solid currentColor;
-  border-width: 0 1.5px 1.5px 0;
-  transform: rotate(45deg);
-  margin-top: -3px;
-  transition: transform 0.2s;
-}
-
-details[open] > .slides-toggle::after {
-  transform: rotate(-135deg);
-  margin-top: 1px;
-}
-
-.slides-list {
-  position: absolute;
-  z-index: 30;
-  top: calc(100% + 6px);
-  left: 0;
-  min-width: 240px;
-  max-width: 340px;
-  max-height: min(60vh, 420px);
-  overflow: auto;
-  display: flex;
-  flex-direction: column;
-  background: #fff;
-  border: 1px solid var(--rule);
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(16, 20, 24, 0.16);
-  padding: 6px;
-}
-
-.slides-list a {
-  display: block;
-  font-size: 14px;
-  padding: 8px 12px;
-  border-radius: 6px;
-  color: var(--ink);
-  text-decoration: none;
-  transition: background 0.1s, color 0.1s;
-}
-
-.slides-list a:hover {
-  background: var(--accent-soft);
-  color: var(--accent);
-  text-decoration: none;
-}
-
-/* ---- Teaching collapsible banners ---- */
-
-.ta-collapse {
-  border: 1px solid var(--rule);
-  border-radius: 10px;
-  margin-bottom: 12px;
-  background: #fff;
-}
-
-.ta-banner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 18px;
-  background: var(--accent-soft);
-  cursor: pointer;
-  list-style: none;
-  user-select: none;
-  transition: background 0.15s;
-  border-radius: 9px;
-}
-
-.ta-banner::-webkit-details-marker {
-  display: none;
-}
-
-.ta-banner:hover {
-  background: #dceafa;
-}
-
-details[open] > .ta-banner {
-  border-bottom: 1px solid var(--rule);
-  border-radius: 9px 9px 0 0;
-}
-
-.ta-banner-text {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  min-width: 0;
-}
-
-.ta-banner-title {
-  font-size: 17px;
-  font-weight: 600;
-  color: var(--ink);
-}
-
-.ta-banner-score {
-  font-size: 14px;
+.course-meta {
+  font-size: 0.88rem;
   color: var(--muted);
+  margin-bottom: 0.35rem;
 }
 
-.ta-banner-arrow {
+/* "Evaluation: 4.9/5 (average)" */
+.eval-avg {
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.eval-avg strong {
+  font-weight: 700;
+}
+
+/* small label above the lecture-note and tool lists */
+.sub-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 16px;
+}
+
+/* numbered lecture notes, filled column by column */
+.lecture-grid,
+.tool-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px 28px;
+  max-width: 700px;
+  margin-top: 8px;
+}
+
+.lecture-grid {
+  grid-template-rows: repeat(6, auto);
+  grid-auto-flow: column;
+  counter-reset: lec;
+}
+
+.lecture-grid a,
+.tool-list a {
+  font-size: 14.5px;
+  padding: 3px 0;
+  color: var(--ink);
+}
+
+.lecture-grid a:hover,
+.tool-list a:hover {
+  color: var(--accent);
+}
+
+.lecture-grid a {
+  counter-increment: lec;
+}
+
+.lecture-grid a::before,
+.tool-list a::before {
   display: inline-block;
-  flex: 0 0 auto;
-  width: 8px;
-  height: 8px;
-  border: solid var(--muted);
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-  transition: transform 0.2s;
-  margin-right: 2px;
+  width: 28px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
 }
 
-details[open] > .ta-banner .ta-banner-arrow {
-  transform: rotate(-135deg);
+.lecture-grid a::before {
+  content: counter(lec, decimal-leading-zero);
+  font-variant-numeric: tabular-nums;
 }
 
-.ta-collapse-body {
-  padding: 16px 18px 18px;
-  border-radius: 0 0 9px 9px;
+.tool-list a::before {
+  content: '\2197';
 }
 
-.ta-collapse-body > p:first-child {
-  margin-top: 0;
+.ta-block table {
+  margin-top: 10px;
 }
 
 /* ---- TA evaluation link ---- */
@@ -577,28 +506,25 @@ details[open] > .ta-banner .ta-banner-arrow {
 
 /* ---- Tables ---- */
 
-.page-content table,
-.ta-collapse-body table {
+.page-content table {
   width: 100%;
   border-collapse: collapse;
   font-size: 15px;
   margin-bottom: 0;
 }
 
-.page-content th,
-.ta-collapse-body th {
+.page-content th {
   text-align: left;
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--muted);
-  padding: 10px 12px;
-  background: var(--soft);
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--rule);
 }
 
-.page-content td,
-.ta-collapse-body td {
+.page-content td {
   padding: 11px 12px;
   vertical-align: top;
   color: var(--ink);
@@ -606,8 +532,7 @@ details[open] > .ta-banner .ta-banner-arrow {
   border-bottom: 1px solid var(--rule);
 }
 
-.page-content tbody tr:last-child td,
-.ta-collapse-body tbody tr:last-child td {
+.page-content tbody tr:last-child td {
   border-bottom: none;
 }
 
@@ -648,17 +573,11 @@ details[open] > .ta-banner .ta-banner-arrow {
     text-align: left;
   }
 
-  .slides-expand {
-    position: static;
-    display: block;
-  }
-
-  .slides-list {
-    position: static;
-    min-width: 0;
-    max-width: none;
-    margin-top: 6px;
-    box-shadow: none;
+  .lecture-grid,
+  .tool-list {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    grid-auto-flow: row;
   }
 
 }
