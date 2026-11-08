@@ -12,7 +12,6 @@ title: "Teaching"
 <div class="paper">
   <div class="paper-title">Intermediate Macroeconomics</div>
   <div class="course-meta">Columbia University · Undergraduate · Summers 2024, 2025, 2026 · <span class="eval-avg">Evaluation: <strong>4.9/5</strong> (average)</span></div>
-  <div class="paper-abstract">Covers national income accounting, the closed-economy model, money and inflation, unemployment, the Solow growth model, the IS-LM model, the aggregate supply curve and Phillips curve.</div>
   <div class="course-materials">
     <a href="/files/teaching/IntMacro_Syllabus_2026.pdf" target="_blank">Syllabus</a>
     <a href="/files/teaching/evals/Pacheco_Summer_Teaching_Evaluations.pdf" target="_blank">Teaching evaluations</a>
